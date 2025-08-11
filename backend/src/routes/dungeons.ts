@@ -5,15 +5,11 @@ const router = Router();
 
 router.get('/masmorras', async (req: any, res: any) => {
     try {
-        const { name } = req.query;
+        const { limit, page, name } = req.query;
 
-        if (name) {
-            const apiResponse = await zeldaApi.get('dungeons', { params: { name } });
-
-            return res.status(200).send(apiResponse.data);
-        }
-
-        const apiResponse = await zeldaApi('dungeons');
+        const apiResponse = await zeldaApi.get('dungeons', {
+            params: { limit, page, name }
+        });
 
         res.status(200).send(apiResponse.data);
     } catch (error) {
@@ -25,7 +21,7 @@ router.get('/masmorras', async (req: any, res: any) => {
 router.get('/masmorras/:dungeon_id', async (req: any, res: any) => {
     try {
         const { dungeon_id } = req.params;
-        
+
         const apiResponse = await zeldaApi(`dungeons/${dungeon_id}`);
 
         res.status(200).send(apiResponse.data);

@@ -5,15 +5,11 @@ const router = Router();
 
 router.get('/personagens', async (req: any, res: any) => {
     try {
-        const { name } = req.query;
+        const { limit, page, name } = req.query;
 
-        if(name) {
-            const apiResponse = await zeldaApi.get('characters', { params: { name } });
-
-            return res.status(200).send(apiResponse.data);
-        }
-        
-        const apiResponse = await zeldaApi.get('characters');
+        const apiResponse = await zeldaApi.get('characters', {
+            params: { limit, page, name }
+        });
 
         res.status(200).send(apiResponse.data);
     } catch (error) {
@@ -25,7 +21,7 @@ router.get('/personagens', async (req: any, res: any) => {
 router.get('/personagens/:character_id', async (req: any, res: any) => {
     try {
         const { character_id } = req.params;
-        
+
         const apiResponse = await zeldaApi(`characters/${character_id}`);
 
         res.status(200).send(apiResponse.data);

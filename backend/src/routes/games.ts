@@ -3,17 +3,13 @@ import { zeldaApi } from "../services/axios";
 
 const router = Router();
 
-router.get('/verJogos', async (req: any, res: any) => {
+router.get('/jogos', async (req: any, res: any) => {
     try {
-        const { name } = req.query;
+        const { limit, page, name } = req.query;
 
-        if (name) {
-            const apiResponse = await zeldaApi.get('games', { params: { name } });
-
-            return res.status(200).send(apiResponse.data);
-        }
-
-        const apiResponse = await zeldaApi.get('games');
+        const apiResponse = await zeldaApi.get('games', {
+            params: { limit, page, name }
+        });
 
         res.status(200).send(apiResponse.data);
     } catch (error) {
@@ -22,7 +18,7 @@ router.get('/verJogos', async (req: any, res: any) => {
     }
 });
 
-router.get('/verJogo/:game_id', async (req: any, res: any) => {
+router.get('/jogo/:game_id', async (req: any, res: any) => {
     try {
         const { game_id } = req.params;
         const apiResponse = await zeldaApi.get(`games/${game_id}`);
