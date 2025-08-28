@@ -3,7 +3,7 @@ import { gamesRoutes } from './routes/games'
 import { staffRoutes } from './routes/staff';
 import { charactersRoutes } from './routes/characters';
 import { monstersRoutes } from './routes/monsters';
-import { bossesRoutes } from './routes/bosses';
+import { bossesRoutes } from './routes/bossesRoutes';
 import { dungeonsRoutes } from './routes/dungeons';
 import { placesRoutes } from './routes/places';
 import { itemsRoutes } from './routes/items';
