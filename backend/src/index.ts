@@ -1,12 +1,12 @@
 import express from 'express';
-import { gamesRoutes } from './routes/games'
-import { staffRoutes } from './routes/staff';
-import { charactersRoutes } from './routes/characters';
-import { monstersRoutes } from './routes/monsters';
+import { gamesRoutes } from './routes/gamesRoutes'
+import { staffRoutes } from './routes/staffRoutes';
+import { charactersRoutes } from './routes/charactersRoutes';
+import { monstersRoutes } from './routes/monstersRoutes';
 import { bossesRoutes } from './routes/bossesRoutes';
-import { dungeonsRoutes } from './routes/dungeons';
-import { placesRoutes } from './routes/places';
-import { itemsRoutes } from './routes/items';
+import { dungeonsRoutes } from './routes/dungeonsRoutes';
+import { placesRoutes } from './routes/placesRoutes';
+import { itemsRoutes } from './routes/itemsRoutes';
 
 const app = express();
 

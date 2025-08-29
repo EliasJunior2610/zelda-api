@@ -8,7 +8,7 @@ export interface GetBossesParams {
 
 export interface IBossRepository {
     findAll(params?: GetBossesParams): Promise<any>;
-    findById(id?: string): Promise<any>;
+    findById(id: string): Promise<any>;
 };
 
 export class BossRepository implements IBossRepository {
@@ -28,7 +28,7 @@ export class BossRepository implements IBossRepository {
             return response.data;
         } catch (error) {
             console.error(`Erro ao retornar o chefe ${id} da API:`, error);
-            throw new Error(`Falha ao retornar os chefes com ID ${id}`);
+            throw new Error(`Falha ao retornar o chefe com ID ${id}`);
         }
     };
 };
