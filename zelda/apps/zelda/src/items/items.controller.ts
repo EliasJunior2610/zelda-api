@@ -1,18 +1,18 @@
 import { Controller, Get, Query, Param } from "@nestjs/common";
-import { GamesService } from "./games.service";
+import { ItemsService } from "./items.service";
 import type { GetParams } from "../assets/interfaces";
 
-@Controller('games')
-export class GamesController {
-    constructor(private gamesService: GamesService) {}
+@Controller('items')
+export class ItemsController {
+    constructor(private itemsService: ItemsService) {}
 
     @Get()
     public async findAll(@Query() query: GetParams): Promise<any> {
-        return this.gamesService.findAll(query);
+        return this.itemsService.findAll(query);
     }
 
     @Get(':id')
     public async findById(@Param() params: any): Promise<any> {
-        return this.gamesService.findById(params.id);
+        return this.itemsService.findById(params.id);
     }
 }
