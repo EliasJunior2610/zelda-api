@@ -6,5 +6,4 @@ import { BossesService } from "./bosses.service";
     controllers: [BossesController],
     providers: [BossesService],
 })
-
 export class BossesModule { }

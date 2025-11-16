@@ -2,7 +2,9 @@
   "name": "@zelda/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "npx nx serve zelda"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^11.0.0",

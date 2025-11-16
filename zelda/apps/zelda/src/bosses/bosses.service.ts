@@ -1,25 +1,10 @@
-import axios from "axios";
 import { Injectable } from "@nestjs/common";
-
-export interface GetBossesParams {
-    limit?: number | undefined;
-    page?: number | undefined;
-    name?: string | undefined;
-}
-
-export interface IBossService {
-    findAll(params?: GetBossesParams): Promise<any>;
-    // findById(id?: string): Promise<string>;
-}
-
-const zeldaApi = axios.create({
-    baseURL: 'https://zelda.fanapis.com/api',
-    timeout: 5000,
-});
+import zeldaApi from '../assets/zeldaApi';
+import { GetParams, IService } from "../assets/interfaces";
 
 @Injectable()
-export class BossesService implements IBossService {
-    public async findAll(params: GetBossesParams = {}): Promise<any> {
+export class BossesService implements IService {
+    public async findAll(params: GetParams = {}): Promise<any> {
         try {
             const response = await zeldaApi.get('bosses', { params });
             return response.data;
@@ -29,5 +14,13 @@ export class BossesService implements IBossService {
         }
     }
 
-    // findById(id?: string): Promise<string> {}
+    public async findById(id?: string): Promise<any> {
+        try {
+            const response = await zeldaApi.get(`bosses/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error('Erro ao retornar um chefe específico:', error);
+            throw new Error('Ocorreu um erro ao retornar um chefe específico da API.');
+        }
+    }
 }
